@@ -3,3 +3,4 @@ openai
 langchain
 PyPDF2
 pinecone-client
+uvicorn
