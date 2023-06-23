@@ -13,7 +13,7 @@ from constants import *
 os.environ["OPENAI_API_KEY"]=OPEN_AI_KEY
 
 # Load the PDF from the user request
-loader = UnstructuredPDFLoader("./pdfs/data_science.pdf")
+loader = UnstructuredPDFLoader("../local_file.pdf")
 data = loader.load()
 
 
@@ -58,4 +58,4 @@ llm = OpenAI(temperature=0.8) # Temperature decides the creativity of the LLM wh
 chain = load_qa_chain(llm, chain_type="stuff")
 
 # The query will be answered by the LLM by sending only those chunks of PDFs that related to the user's query
-chain.run(question=query, input_documents= docs)
+print(chain.run(question=query, input_documents= docs))
