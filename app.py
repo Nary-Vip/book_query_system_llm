@@ -26,6 +26,7 @@ async def respond(data: QueryModel):
     book.loadThePDFS(data.docUrl, data.index_name)
     book.docSplitter()
     book.vectorizeAndUpload(data.index_name)
+    book.userQuery(data.query)
 
 
 

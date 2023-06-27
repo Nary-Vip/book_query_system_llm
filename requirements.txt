@@ -6,4 +6,5 @@ pinecone-client
 uvicorn
 unstructured
 chromadb
+tiktoken
 -e .
