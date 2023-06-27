@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: BookQuery
+Version: 0.0.1
+Summary: A book query system
+Home-page: https://github.com/Nary-Vip/book_query_system_llm
+Author: Nary-Vip
+Author-email: nary2vip@gmail.com
+Project-URL: Bug Tracker, https://github.com/Nary-Vip/book_query_system_llm/issues
+Description-Content-Type: text/markdown
+
+Langchain model for querying book.

@@ -1,0 +1,6 @@
+README.md
+setup.py
+src/BookQuery.egg-info/PKG-INFO
+src/BookQuery.egg-info/SOURCES.txt
+src/BookQuery.egg-info/dependency_links.txt
+src/BookQuery.egg-info/top_level.txt
