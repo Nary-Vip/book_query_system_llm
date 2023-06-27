@@ -5,4 +5,5 @@ PyPDF2
 pinecone-client
 uvicorn
 unstructured
+chromadb
 -e .

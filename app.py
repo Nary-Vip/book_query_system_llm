@@ -24,8 +24,8 @@ class QueryModel(BaseModel):
 async def respond(data: QueryModel):
     book = BookQuery(OPEN_AI_KEY, PINECONE_API_KEY, ENVIRONMENT_KEY)
     book.loadThePDFS(data.docUrl, data.index_name)
-    # book.docSplitter()
-    # book.vectorizeAndUpload(data.index_name)
+    book.docSplitter()
+    book.vectorizeAndUpload(data.index_name)
 
 
 

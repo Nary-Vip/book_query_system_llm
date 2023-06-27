@@ -1,12 +1,13 @@
 import os
 import io
+import PyPDF2
 from pathlib import Path
 import pinecone
 import requests
 from langchain.llms import OpenAI
 from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.document_loaders import OnlinePDFLoader
+from langchain.document_loaders import UnstructuredPDFLoader
 from langchain.chains.question_answering import load_qa_chain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
@@ -26,16 +27,16 @@ class BookQuery:
         try:
             print("Load pdf starts")
             res = requests.get(pdfLink)
-            if res.status_code == 200:
-                pdf_data = io
-
-
             response = res.content
             filename = Path(f'{filename}.pdf')
             filename.write_bytes(response)
-            # print("Request api pdf data")
-            # loader = OnlinePDFLoader(pdfLink)
-            # self.data = loader.load()
+            pdf_reader = PyPDF2.PdfReader(filename)
+            raw_text = ""
+            for i, page in enumerate(pdf_reader.pages):
+                raw_text += page.extract_text()
+            
+            print(len(raw_text))
+            self.data = raw_text
             print("PDF Loaded")
         except Exception as e:
             print(e)
@@ -43,7 +44,7 @@ class BookQuery:
 
     def docSplitter(self):
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-        self.texts = text_splitter.split_documents(self.data)
+        self.texts = text_splitter.split_text(self.data)
         print("Split Done")
     
     def vectorizeAndUpload(self, index_name):
